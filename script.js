@@ -113,9 +113,9 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollTrack.classList.remove('visible');
       }
 
-      // Update the fill height and dot position
+      // Update the fill height and dot position (centered for 8px height glowing dot)
       scrollFill.style.height = scrollPercent + '%';
-      scrollDot.style.top     = `calc(${scrollPercent}% - 5px)`;
+      scrollDot.style.top     = `calc(${scrollPercent}% - 4px)`;
     };
 
     window.addEventListener('scroll', updateScrollProgress, { passive: true });
@@ -411,27 +411,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  // ============================================================
-  // 13. TILT EFFECT ON PROFILE IMAGE CARD
-  // ============================================================
-  const imgWrapper = document.querySelector('.image-wrapper');
-  if (imgWrapper) {
-    imgWrapper.addEventListener('mousemove', e => {
-      const rect   = imgWrapper.getBoundingClientRect();
-      const cx     = rect.left + rect.width / 2;
-      const cy     = rect.top  + rect.height / 2;
-      const dx     = (e.clientX - cx) / (rect.width / 2);
-      const dy     = (e.clientY - cy) / (rect.height / 2);
-      const rotX   = dy * -6;
-      const rotY   = dx * 6;
-      imgWrapper.style.transform      = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.02)`;
-      imgWrapper.style.transition     = 'transform 0.1s ease';
-    });
-    imgWrapper.addEventListener('mouseleave', () => {
-      imgWrapper.style.transform  = 'perspective(800px) rotateX(0) rotateY(0) scale(1)';
-      imgWrapper.style.transition = 'transform 0.5s ease';
-    });
-  }
+  // Removed JS Tilt Effect on profile image in favor of clean, performant CSS transitions.
 
 
   // ============================================================

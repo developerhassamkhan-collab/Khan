@@ -46,6 +46,12 @@
   padding: 0;
 }
 
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-height) + 20px);
@@ -57,7 +63,6 @@ html {
 }
 
 body {
-  overflow-x: hidden;
   line-height: 1.6;
 }
 
@@ -916,15 +921,36 @@ body::before {
   object-fit: cover;
   object-position: top center;
   display: block;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.image-border-inner:hover .profile-img,
-.image-wrapper:hover .profile-img { transform: scale(1.04); }
+/* Smooth transitions for profile card elements */
+.gradient-glow-behind {
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-/* Hide floating tags on very small screens */
-@media (max-width: 480px) {
-  .floating-tag { display: none; }
+.image-border-container {
+  transition: box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Professional hardware-accelerated CSS hover effect */
+.image-wrapper:hover .profile-img {
+  transform: scale(1.03);
+}
+
+.image-wrapper:hover .image-border-container {
+  transform: translateY(-5px);
+  box-shadow: 0 40px 100px -15px rgba(var(--color-primary-rgb), 0.55);
+}
+
+.image-wrapper:hover .gradient-glow-behind {
+  opacity: 0.75;
+  transform: translateY(-5px) scale(1.04);
+}
+
+/* Hide floating tags on all tablet and mobile screens to prevent overflow and text overlap */
+@media (max-width: 768px) {
+  .floating-tag { display: none !important; }
 }
 
 /* Floating skill tags */
@@ -1740,40 +1766,26 @@ body::before {
   transition: height 0.08s linear;
 }
 
-/* Glowing dot at the end of the progress fill */
+/* Sleek minimal glowing dot at the end of the progress fill */
 .scroll-progress-dot {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: 11px;
-  height: 11px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--color-secondary);
   box-shadow:
-    0 0 10px rgba(var(--color-secondary-rgb), 0.7),
-    0 0 25px rgba(var(--color-secondary-rgb), 0.35),
-    0 0 50px rgba(var(--color-secondary-rgb), 0.15);
-  transition: top 0.08s linear, box-shadow 0.3s ease;
+    0 0 8px rgba(var(--color-secondary-rgb), 0.8),
+    0 0 20px rgba(var(--color-secondary-rgb), 0.4);
+  transition: top 0.08s linear;
   top: 0%;
 }
 
-/* Hide on small screens to avoid overlap */
+/* Hide track on tablet and mobile screens to avoid page layout interference */
 @media (max-width: 768px) {
   .scroll-progress-track {
-    left: 12px;
-    width: 2px;
-    height: 20vh;
-    max-height: 120px;
-  }
-  .scroll-progress-dot {
-    width: 8px;
-    height: 8px;
-  }
-}
-
-@media (max-width: 480px) {
-  .scroll-progress-track {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -1815,4 +1827,47 @@ img {
 ::selection {
   background: rgba(99, 102, 241, 0.35);
   color: var(--text-light);
+}
+
+/* ==========================================
+   13. ADDITIONAL RESPONSIVE & MOBILE FIXES
+   ========================================== */
+/* Scale down stats numbers and container width on mobile */
+@media (max-width: 480px) {
+  .hero-stats {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 16px 12px !important;
+  }
+  .stat-num {
+    font-size: 1.5rem !important;
+  }
+  .stat-label {
+    font-size: 0.6rem !important;
+    letter-spacing: 0.1em !important;
+  }
+}
+
+/* Make about info grid cards 1-column on mobile to prevent overflow */
+@media (max-width: 600px) {
+  .info-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .info-card {
+    padding: 14px 16px !important;
+  }
+}
+
+/* Reduce card paddings and layout margins for small mobile viewports */
+@media (max-width: 480px) {
+  .service-card {
+    padding: 24px 20px !important;
+  }
+  .contact-form-card {
+    padding: 24px 20px !important;
+  }
+  .section-container {
+    padding: 0 20px !important;
+  }
 }
