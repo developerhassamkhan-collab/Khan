@@ -824,19 +824,8 @@ body::before {
   justify-content: center;
   align-items: center;
   position: relative;
+  /* Default desktop: right column */
   order: 2;
-  /* Mobile: limit height so image doesn't take full screen */
-  max-height: 360px;
-}
-
-@media(min-width: 480px) {
-  .hero-image-container { max-height: 420px; }
-}
-
-@media(min-width: 1024px) {
-  .hero-image-container {
-    max-height: none;
-  }
 }
 
 /* Animated ring decorations — hide on mobile to avoid overflow */
@@ -872,22 +861,9 @@ body::before {
 .image-wrapper {
   position: relative;
   width: 100%;
-  /* Mobile: small portrait card, not full width */
-  max-width: 240px;
+  max-width: 460px;
   aspect-ratio: 3/4;
   z-index: 2;
-}
-
-@media(min-width: 480px) {
-  .image-wrapper { max-width: 280px; }
-}
-
-@media(min-width: 640px) {
-  .image-wrapper { max-width: 340px; }
-}
-
-@media(min-width: 1024px) {
-  .image-wrapper { max-width: 460px; }
 }
 
 /* Multi-layer glow */
@@ -1801,27 +1777,75 @@ img { transition: opacity 0.3s ease; }
   .section-container { padding: 0 20px !important; }
 }
 
-/* Hero mobile layout */
+/* ==========================================
+   HERO MOBILE LAYOUT — matches screenshot
+   Image top full-width, text bottom left-aligned
+   ========================================== */
 @media (max-width: 1023px) {
+
   .hero-section {
-    padding-top: calc(var(--header-height) + 30px);
+    padding-top: calc(var(--header-height) + 20px);
     padding-bottom: 50px;
   }
+
+  .hero-container {
+    gap: 28px;
+  }
+
+  /* Image: full width card on top like screenshot */
+  .hero-image-container {
+    order: 1;
+    max-height: none;
+    width: 100%;
+  }
+
+  /* Full width, landscape-ish ratio like screenshot */
+  .image-wrapper {
+    max-width: 100%;
+    width: 100%;
+    aspect-ratio: 3 / 3.5;
+  }
+
+  /* Text: left aligned, below image */
   .hero-text-content {
-    text-align: center;
-    align-items: center;
-  }
-  .hero-description {
+    order: 2;
     text-align: left;
-    font-size: 0.95rem;
+    align-items: flex-start;
   }
-  .hero-actions { justify-content: center; }
-  .hero-stats { margin: 0 auto; }
-  .hero-subtitle::before {
-    left: 50%;
-    transform: translateX(-50%);
+
+  /* Hide welcome badge on mobile */
+  .welcome-badge {
+    display: none;
   }
+
   .hero-title {
-    font-size: 2.4rem;
+    font-size: 2.2rem;
+    margin-bottom: 10px;
   }
+
+  /* Subtitle underline — left aligned */
+  .hero-subtitle::before {
+    left: 0;
+    transform: none;
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
+    margin-top: 16px;
+    margin-bottom: 28px;
+  }
+
+  .hero-actions {
+    justify-content: flex-start;
+    gap: 12px;
+  }
+
+  .hero-stats {
+    margin: 0;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-title { font-size: 1.9rem; }
 }
