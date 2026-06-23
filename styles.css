@@ -1806,26 +1806,33 @@ img { transition: opacity 0.3s ease; }
   .image-wrapper {
     max-width: 100%;
     width: 100%;
-    aspect-ratio: unset;  /* remove forced ratio */
-    height: auto;
+    aspect-ratio: auto !important;
+    height: auto !important;
   }
 
   /* Border container must also be auto height */
-  .image-border-container {
-    height: auto;
-  }
-
-  /* Inner container: auto height */
+  .image-border-container,
   .image-border-inner {
-    height: auto;
+    width: 100%;
+    height: auto !important;
+    aspect-ratio: auto !important;
   }
 
   /* Image: natural width, do NOT stretch */
   .profile-img {
     width: 100%;
-    height: auto;          /* natural height — no pixelation */
-    object-fit: unset;     /* remove cover constraint on mobile */
+    max-width: 100%;
+    height: auto !important;          /* natural height — no pixelation */
+    object-fit: unset;                /* remove cover constraint on mobile */
+    image-rendering: auto;
     display: block;
+  }
+
+  /* Disable desktop hover transform on touch devices */
+  .image-wrapper:hover .profile-img,
+  .image-wrapper:hover .image-border-container,
+  .image-wrapper:hover .gradient-glow-behind {
+    transform: none !important;
   }
 
   /* Text: left aligned, below image */
