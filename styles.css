@@ -878,7 +878,8 @@ body::before {
   filter: blur(35px);
   opacity: 0.45;
   z-index: 1;
-
+  animation: glowPulse 5s ease-in-out infinite alternate;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 @keyframes glowPulse {
