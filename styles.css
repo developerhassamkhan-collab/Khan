@@ -1877,4 +1877,14 @@ img { transition: opacity 0.3s ease; }
 
 @media (max-width: 400px) {
   .hero-title { font-size: 1.9rem; }
+}.mobile-overlay {
+    /* Baqi CSS lines... */
+    pointer-events: auto !important;
+}
+.mobile-nav-item, .mobile-nav-links a {
+    position: relative;
+    z-index: 10; /* Taake yeh sab se upar rahein */
+}
+#mobile-overlay {
+    z-index: 9999 !important; /* Sab se top par lane ke liye */
 }
