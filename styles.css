@@ -927,7 +927,6 @@ body::before {
 }
 
 .image-wrapper:hover .profile-img {
-  transform: scale(1.03);
 }
 
 .image-wrapper:hover .image-border-container {
