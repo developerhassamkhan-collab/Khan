@@ -1871,3 +1871,40 @@ img {
     padding: 0 20px !important;
   }
 }
+/* ==========================================
+   MOBILE HERO FIX — portrait phones
+   ========================================== */
+@media (max-width: 767px) {
+  .hero-section {
+    padding-top: calc(var(--header-height) + 30px);
+    padding-bottom: 60px;       /* 100px tha, bahut zyada tha */
+    min-height: auto;           /* 100vh force nahi karta mobile pe */
+  }
+
+  .hero-container {
+    gap: 40px;                  /* 60px tha */
+  }
+
+  .image-wrapper {
+    max-width: 280px;           /* 460px tha — mobile pe bahut bada */
+    margin: 0 auto;
+  }
+
+  .hero-title {
+    font-size: 2.4rem;          /* 3rem default — thoda chhota */
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
+    margin-bottom: 32px;        /* 44px tha */
+  }
+
+  .hero-actions {
+    margin-bottom: 36px;        /* 56px tha */
+  }
+
+  .hero-stats {
+    max-width: 100%;
+    padding: 18px 16px;
+  }
+}
