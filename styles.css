@@ -1792,25 +1792,26 @@ img { transition: opacity 0.3s ease; }
     gap: 28px;
   }
 
-  /* Image: top, full width */
+  /* Image: top, centered, fixed maximum width for mobile devices */
   .hero-image-container {
     order: 1;
     width: 100%;
+    justify-content: center;
   }
 
   /*
-   * KEY FIX: Don't force aspect-ratio on mobile.
-   * Let the image define its own height naturally.
-   * This prevents pixelation/stretching.
+   * KEY FIX: Avoid upscaling the low-resolution asset.
+   * Keep image width within the actual source pixel width.
    */
   .image-wrapper {
-    max-width: 100%;
     width: 100%;
+    max-width: 460px;
     aspect-ratio: auto !important;
     height: auto !important;
+    margin: 0 auto;
   }
 
-  /* Border container must also be auto height */
+  /* Border container must also match the image height naturally */
   .image-border-container,
   .image-border-inner {
     width: 100%;
@@ -1818,17 +1819,17 @@ img { transition: opacity 0.3s ease; }
     aspect-ratio: auto !important;
   }
 
-  /* Image: natural width, do NOT stretch */
+  /* Image: scale down cleanly, do not enlarge beyond source width */
   .profile-img {
     width: 100%;
-    max-width: 100%;
-    height: auto !important;          /* natural height — no pixelation */
-    object-fit: unset;                /* remove cover constraint on mobile */
+    max-width: 760px;
+    height: auto !important;
+    object-fit: unset;
     image-rendering: auto;
     display: block;
   }
 
-  /* Disable desktop hover transform on touch devices */
+  /* Prevent mobile hover transforms that can blur the image */
   .image-wrapper:hover .profile-img,
   .image-wrapper:hover .image-border-container,
   .image-wrapper:hover .gradient-glow-behind {
