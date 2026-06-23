@@ -1792,18 +1792,40 @@ img { transition: opacity 0.3s ease; }
     gap: 28px;
   }
 
-  /* Image: full width card on top like screenshot */
+  /* Image: top, full width */
   .hero-image-container {
     order: 1;
-    max-height: none;
     width: 100%;
   }
 
-  /* Full width, landscape-ish ratio like screenshot */
+  /*
+   * KEY FIX: Don't force aspect-ratio on mobile.
+   * Let the image define its own height naturally.
+   * This prevents pixelation/stretching.
+   */
   .image-wrapper {
     max-width: 100%;
     width: 100%;
-    aspect-ratio: 3 / 3.5;
+    aspect-ratio: unset;  /* remove forced ratio */
+    height: auto;
+  }
+
+  /* Border container must also be auto height */
+  .image-border-container {
+    height: auto;
+  }
+
+  /* Inner container: auto height */
+  .image-border-inner {
+    height: auto;
+  }
+
+  /* Image: natural width, do NOT stretch */
+  .profile-img {
+    width: 100%;
+    height: auto;          /* natural height — no pixelation */
+    object-fit: unset;     /* remove cover constraint on mobile */
+    display: block;
   }
 
   /* Text: left aligned, below image */
@@ -1823,7 +1845,6 @@ img { transition: opacity 0.3s ease; }
     margin-bottom: 10px;
   }
 
-  /* Subtitle underline — left aligned */
   .hero-subtitle::before {
     left: 0;
     transform: none;
