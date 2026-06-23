@@ -624,7 +624,7 @@ body::before {
 .hero-container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 50px;
+  gap: 36px;
   align-items: center;
   position: relative;
   z-index: 1;
@@ -641,11 +641,7 @@ body::before {
 .hero-text-content {
   display: flex;
   flex-direction: column;
-  order: 2;
-}
-
-@media(min-width: 1024px) {
-  .hero-text-content { order: 1; }
+  order: 1;
 }
 
 .hero-title {
@@ -828,18 +824,17 @@ body::before {
   justify-content: center;
   align-items: center;
   position: relative;
-  order: 1;
-  /* Mobile: limit height so image doesn't dominate */
-  max-height: 380px;
+  order: 2;
+  /* Mobile: limit height so image doesn't take full screen */
+  max-height: 360px;
 }
 
 @media(min-width: 480px) {
-  .hero-image-container { max-height: 440px; }
+  .hero-image-container { max-height: 420px; }
 }
 
 @media(min-width: 1024px) {
   .hero-image-container {
-    order: 2;
     max-height: none;
   }
 }
@@ -877,18 +872,18 @@ body::before {
 .image-wrapper {
   position: relative;
   width: 100%;
-  /* Mobile: portrait ratio but bounded */
-  max-width: 280px;
+  /* Mobile: small portrait card, not full width */
+  max-width: 240px;
   aspect-ratio: 3/4;
   z-index: 2;
 }
 
 @media(min-width: 480px) {
-  .image-wrapper { max-width: 320px; }
+  .image-wrapper { max-width: 280px; }
 }
 
 @media(min-width: 640px) {
-  .image-wrapper { max-width: 380px; }
+  .image-wrapper { max-width: 340px; }
 }
 
 @media(min-width: 1024px) {
@@ -1806,14 +1801,27 @@ img { transition: opacity 0.3s ease; }
   .section-container { padding: 0 20px !important; }
 }
 
-/* Hero mobile centering */
+/* Hero mobile layout */
 @media (max-width: 1023px) {
+  .hero-section {
+    padding-top: calc(var(--header-height) + 30px);
+    padding-bottom: 50px;
+  }
   .hero-text-content {
     text-align: center;
     align-items: center;
   }
-  .hero-description { text-align: left; }
+  .hero-description {
+    text-align: left;
+    font-size: 0.95rem;
+  }
   .hero-actions { justify-content: center; }
   .hero-stats { margin: 0 auto; }
-  .hero-subtitle::before { left: 50%; transform: translateX(-50%); }
+  .hero-subtitle::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .hero-title {
+    font-size: 2.4rem;
+  }
 }
