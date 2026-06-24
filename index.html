@@ -6,12 +6,11 @@
   <title>Hassam Khan — WordPress & Webflow Developer</title>
   <meta name="description" content="Custom WordPress, Webflow & Elementor developer. Figma to WordPress, Figma to Webflow conversions. Pixel-perfect, responsive, fast.">
   <meta name="author" content="Hassam Khan">
-  
-  
-  <!-- Open Graph / Facebook -->
+
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Hassam Khan — WordPress & Webflow Developer">
-  <meta property="og:description" content="Custom WordPress, Webflow & Elementor developer. Figma to WordPress, Figma to Webflow conversions. Pixel-perfect, responsive, fast.">
+  <meta property="og:description" content="Custom WordPress, Webflow & Elementor developer. Pixel-perfect, responsive, fast.">
   <meta property="og:image" content="assets/hassam-khan.jpg">
 
   <!-- Google Fonts -->
@@ -21,597 +20,549 @@
 
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="dark-theme">
+<body>
+
   <!-- Particles Canvas -->
-  <canvas id="particles-canvas"></canvas>
+  <canvas id="particles-canvas" aria-hidden="true"></canvas>
 
-  <!-- Glowing Background Orbs -->
-  <div class="glow-orb glow-orb-1"></div>
-  <div class="glow-orb glow-orb-2"></div>
-  <div class="glow-orb glow-orb-3"></div>
+  <!-- Background Orbs -->
+  <div class="glow-orb glow-orb-1" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb-2" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb-3" aria-hidden="true"></div>
 
-  <!-- Left Side Scroll Progress Indicator -->
-  <div class="scroll-progress-track" id="scroll-progress-track">
-    <div class="scroll-progress-fill" id="scroll-progress-fill"></div>
-    <div class="scroll-progress-dot" id="scroll-progress-dot"></div>
-  </div>
+  <!-- Scroll Progress Bar (top) -->
+  <div class="scroll-progress-bar" id="scroll-progress-bar" aria-hidden="true"></div>
 
-  <!-- Header / Navigation -->
-  <header class="main-header">
-    <nav class="nav-container">
-      <a href="#home" class="logo-group">
-        <div class="logo-box">HK</div>
-        <span class="logo-text">Hassam Khan</span>
+  <!-- ============================================================
+       HEADER
+  ============================================================ -->
+  <header class="main-header" id="main-header">
+    <nav class="nav-inner">
+      <a href="#home" class="logo">
+        <span class="logo-mark">HK</span>
+        <span class="logo-name">Hassam Khan</span>
       </a>
-      <div class="nav-links">
-        <a href="#home" class="nav-item">Home</a>
-        <a href="#about" class="nav-item">About</a>
-        <a href="#skills" class="nav-item">Skills</a>
-        <a href="#services" class="nav-item">Services</a>
-        <a href="#contact" class="nav-item">Contact</a>
-      </div>
-      <a href="https://www.linkedin.com/in/hassam-khan-b36684397/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-header-hire">
-        <span>Hire Me</span>
-      </a>
-      <button class="mobile-toggle" aria-label="Toggle menu" id="mobile-toggle">
-        <span class="bar bar-1"></span>
-        <span class="bar bar-2"></span>
-        <span class="bar bar-3"></span>
+
+      <ul class="nav-links" role="list">
+        <li><a href="#home"     class="nav-link">Home</a></li>
+        <li><a href="#about"    class="nav-link">About</a></li>
+        <li><a href="#skills"   class="nav-link">Skills</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#contact"  class="nav-link">Contact</a></li>
+      </ul>
+
+      <a href="https://www.linkedin.com/in/hassam-khan-b36684397/" target="_blank" rel="noopener" class="btn btn-primary nav-cta">Hire Me</a>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span class="hbar"></span>
+        <span class="hbar"></span>
+        <span class="hbar"></span>
       </button>
     </nav>
   </header>
 
-  <!-- Mobile Overlay Navigation -->
-  <div class="mobile-overlay" id="mobile-overlay">
-    <nav class="mobile-nav-links">
-      <a href="#home" class="mobile-nav-item">Home</a>
-      <a href="#about" class="mobile-nav-item">About</a>
-      <a href="#skills" class="mobile-nav-item">Skills</a>
-      <a href="#services" class="mobile-nav-item">Services</a>
-      <a href="#contact" class="mobile-nav-item">Contact</a>
-<a href="https://www.linkedin.com/in/hassam-khan-b36684397" class="mobile-nav-item" target="_blank">Hire Me</a>    </nav>
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <div class="drawer-inner">
+      <nav class="drawer-nav" role="navigation">
+        <a href="#home"     class="drawer-link">Home</a>
+        <a href="#about"    class="drawer-link">About</a>
+        <a href="#skills"   class="drawer-link">Skills</a>
+        <a href="#services" class="drawer-link">Services</a>
+        <a href="#contact"  class="drawer-link">Contact</a>
+        <a href="https://www.linkedin.com/in/hassam-khan-b36684397/" target="_blank" rel="noopener" data-external="true" class="btn btn-primary" style="margin-top:12px;text-align:center;">Hire Me</a>
+      </nav>
+    </div>
   </div>
+  <div class="drawer-overlay" id="drawer-overlay"></div>
 
   <main>
-    <!-- Hero Section -->
-    <section id="home" class="hero-section">
-      <!-- Aurora Light Beams -->
-      <div class="hero-aurora hero-aurora-1"></div>
-      <div class="hero-aurora hero-aurora-2"></div>
-      <div class="hero-aurora hero-aurora-3"></div>
-      <div class="section-container hero-container">
-        <div class="hero-text-content reveal-item" data-reveal="fade-up">
-          <div class="welcome-badge">
-            <span class="emoji">👋</span>
-            <span>Welcome to my Portfolio</span>
+    <!-- ============================================================
+         HERO SECTION
+    ============================================================ -->
+    <section id="home" class="hero">
+      <!-- Aurora beams -->
+      <div class="aurora a1" aria-hidden="true"></div>
+      <div class="aurora a2" aria-hidden="true"></div>
+
+      <div class="container hero-grid">
+
+        <!-- ---- Left: Text ---- -->
+        <div class="hero-text reveal" data-dir="up">
+          <div class="badge">
+            <span class="badge-dot"></span>
+            <span>Available for Projects</span>
           </div>
-          <h1 class="hero-title">
-            I'm <span class="text-gradient">Hassam Khan</span>
+
+          <h1 class="hero-heading">
+            I'm <span class="shimmer-text">Hassam Khan</span>
           </h1>
-          <p class="hero-subtitle">WordPress & Webflow Developer</p>
-          <p class="hero-description">
+
+          <p class="hero-role">
+            <span id="typewriter">WordPress &amp; Webflow Developer</span><span class="cursor" aria-hidden="true">|</span>
+          </p>
+
+          <p class="hero-desc">
             Elementor expert turning Figma designs into stunning, high-converting WordPress and Webflow websites. Pixel-perfect, blazing fast, and built to grow your business.
           </p>
+
           <div class="hero-actions">
-  <a 
-    href="https://wa.me/923110205721?text=Hi%20Hassam!%20I%20visited%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20project%20with%20you." 
-    target="_blank" 
-    rel="noopener noreferrer" 
-    class="btn btn-primary btn-glow group"
-  >
-    <span>Let's Work Together</span>
-    <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M5 12h14M12 5l7 7-7 7"/>
-    </svg>
-  </a>
-  <a href="#services" class="btn btn-outline">View Services</a>
-</div>
-          
-          <!-- Hero Stats -->
+            <a href="https://wa.me/923110205721?text=Hi%20Hassam,%20I'm%20interested%20in%20your%20web%20development%20services." target="_blank" rel="noopener" class="btn btn-primary btn-glow">
+              Get In Touch
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.54a16 16 0 0 0 5.55 5.55l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+            </a>
+            <a href="#services" class="btn btn-ghost">View Services</a>
+          </div>
+
+          <!-- Stats -->
           <div class="hero-stats">
-            <div class="stat-box">
-              <div class="stat-num text-gradient">50+</div>
-              <div class="stat-label">Projects</div>
+            <div class="stat">
+              <span class="stat-num shimmer-text">50+</span>
+              <span class="stat-label">Projects</span>
             </div>
-            <div class="stat-box">
-              <div class="stat-num text-gradient">30+</div>
-              <div class="stat-label">Clients</div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+              <span class="stat-num shimmer-text">30+</span>
+              <span class="stat-label">Clients</span>
             </div>
-            <div class="stat-box">
-              <div class="stat-num text-gradient">1 Year</div>
-              <div class="stat-label">Exp</div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+              <span class="stat-num shimmer-text">1 Yr</span>
+              <span class="stat-label">Experience</span>
             </div>
           </div>
         </div>
 
-        <!-- Hero Image Frame -->
-        <div class="hero-image-container reveal-item" data-reveal="zoom-in" data-delay="200">
-          <div class="image-wrapper">
-            <div class="gradient-glow-behind"></div>
-            <div class="image-border-container">
-              <div class="image-border-inner">
-                <img src="assets/hassam-khan.jpg" alt="Hassam Khan — WordPress and Webflow Developer" class="profile-img">
-              </div>
+        <!-- ---- Right: Photo ---- -->
+        <div class="hero-photo reveal" data-dir="zoom" data-delay="200">
+          <div class="photo-glow" aria-hidden="true"></div>
+          <div class="photo-frame">
+            <div class="photo-inner">
+              <img src="assets/hassam-khan.jpg" alt="Hassam Khan — WordPress and Webflow Developer" class="profile-img" loading="eager">
             </div>
-            <!-- Floating Tags -->
-            <div class="floating-tag tag-top-right">WordPress</div>
-            <div class="floating-tag tag-bottom-left">Webflow</div>
-            <div class="floating-tag tag-middle-left">Figma → Code</div>
+          </div>
+
+          <!-- Floating chips — hidden on mobile via CSS -->
+          <div class="chip chip-tr" aria-hidden="true">
+            <span class="chip-dot"></span>WordPress
+          </div>
+          <div class="chip chip-bl" aria-hidden="true">
+            <span class="chip-dot"></span>Webflow
+          </div>
+          <div class="chip chip-ml" aria-hidden="true">
+            <span class="chip-dot"></span>Figma → Code
           </div>
         </div>
+
+      </div><!-- /hero-grid -->
+
+      <!-- Scroll hint -->
+      <div class="scroll-hint" aria-hidden="true">
+        <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
       </div>
-
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about-section">
-      <div class="section-container about-container">
-        <!-- About Left -->
-        <div class="about-left reveal-item" data-reveal="fade-right">
-          <div class="section-badge">About Me</div>
-          <h2 class="section-title">Passionate About <span class="text-gradient">Web Design</span></h2>
-          <p class="about-paragraph">
-            I'm Hassam Khan — a WordPress & Webflow developer specialized in converting Figma designs into pixel-perfect, lightning-fast websites that actually convert.
+
+    <!-- ============================================================
+         ABOUT SECTION
+    ============================================================ -->
+    <section id="about" class="section about-section">
+      <div class="container about-grid">
+
+        <!-- Left -->
+        <div class="about-left reveal" data-dir="right">
+          <p class="eyebrow">About Me</p>
+          <h2 class="section-heading">Passionate About <span class="shimmer-text">Web Design</span></h2>
+
+          <p class="body-text">
+            I'm Hassam Khan — a WordPress &amp; Webflow developer specialized in converting Figma designs into pixel-perfect, lightning-fast websites that actually convert.
           </p>
-          <p class="about-paragraph">
+          <p class="body-text">
             Whether you need a custom Elementor build, a Webflow site with rich interactions, or a Figma to WordPress / Figma to Webflow conversion, I deliver clean code and beautiful design.
           </p>
-          
-          <!-- Info Cards -->
+
           <div class="info-grid">
             <div class="info-card">
-              <div class="info-label">Name</div>
-              <div class="info-value">Hassam Khan</div>
+              <span class="info-label">Name</span>
+              <span class="info-value">Hassam Khan</span>
             </div>
             <div class="info-card">
-              <div class="info-label">Experience</div>
-              <div class="info-value">1 Year</div>
+              <span class="info-label">Experience</span>
+              <span class="info-value">1 Year</span>
             </div>
             <div class="info-card">
-              <div class="info-label">Specialty</div>
-              <div class="info-value">WordPress & Webflow</div>
+              <span class="info-label">Specialty</span>
+              <span class="info-value">WordPress & Webflow</span>
             </div>
             <div class="info-card">
-              <div class="info-label">Location</div>
-              <div class="info-value">Pakistan</div>
+              <span class="info-label">Location</span>
+              <span class="info-value">Pakistan</span>
             </div>
           </div>
         </div>
 
-        <!-- About Right (Journey Timeline) -->
-        <div class="about-right reveal-item" data-reveal="fade-left" data-delay="200">
-          <h3 class="journey-title">My Journey</h3>
-          <div class="timeline-container">
-            <div class="timeline-line"></div>
-            
-            <!-- Timeline Item 1 -->
-            <div class="timeline-item reveal-item" data-reveal="fade-up" data-delay="100">
-              <div class="timeline-dot"></div>
-              <div class="timeline-year">2025</div>
-              <div class="timeline-heading">Started Web Development</div>
-              <div class="timeline-desc">Began the journey learning WordPress and Elementor fundamentals, focusing on styling layouts and design structure.</div>
+        <!-- Right: Timeline -->
+        <div class="about-right reveal" data-dir="left" data-delay="150">
+          <h3 class="timeline-heading-main">My Journey</h3>
+          <div class="timeline">
+            <div class="tl-line" aria-hidden="true"></div>
+
+            <div class="tl-item reveal" data-dir="up" data-delay="100">
+              <div class="tl-dot" aria-hidden="true"></div>
+              <div class="tl-body">
+                <span class="tl-year">2025</span>
+                <h4 class="tl-title">Started Web Development</h4>
+                <p class="tl-desc">Began the journey learning WordPress and Elementor fundamentals, focusing on styling layouts and design structure.</p>
+              </div>
             </div>
 
-            <!-- Timeline Item 2 -->
-            <div class="timeline-item reveal-item" data-reveal="fade-up" data-delay="200">
-              <div class="timeline-dot"></div>
-              <div class="timeline-year">2025</div>
-              <div class="timeline-heading">Elementor & Webflow Specialist</div>
-              <div class="timeline-desc">Mastered Elementor Pro and Webflow, creating custom responsive builds with rich client interactions.</div>
+            <div class="tl-item reveal" data-dir="up" data-delay="200">
+              <div class="tl-dot" aria-hidden="true"></div>
+              <div class="tl-body">
+                <span class="tl-year">2025</span>
+                <h4 class="tl-title">Elementor & Webflow Specialist</h4>
+                <p class="tl-desc">Mastered Elementor Pro and Webflow, creating custom responsive builds with rich client interactions.</p>
+              </div>
             </div>
 
-            <!-- Timeline Item 3 -->
-            <div class="timeline-item reveal-item" data-reveal="fade-up" data-delay="300">
-              <div class="timeline-dot"></div>
-              <div class="timeline-year">2026</div>
-              <div class="timeline-heading">Figma → Web Conversion Expert</div>
-              <div class="timeline-desc">Delivering pixel-perfect Figma to WordPress and Figma to Webflow projects worldwide for brands and design studios.</div>
+            <div class="tl-item reveal" data-dir="up" data-delay="300">
+              <div class="tl-dot" aria-hidden="true"></div>
+              <div class="tl-body">
+                <span class="tl-year">2026</span>
+                <h4 class="tl-title">Figma → Web Conversion Expert</h4>
+                <p class="tl-desc">Delivering pixel-perfect Figma to WordPress and Figma to Webflow projects worldwide for brands and design studios.</p>
+              </div>
             </div>
 
-            <!-- Timeline Item 4 -->
-            <div class="timeline-item reveal-item" data-reveal="fade-up" data-delay="400">
-              <div class="timeline-dot"></div>
-              <div class="timeline-year">2026</div>
-              <div class="timeline-heading">Full-Service Freelancing</div>
-              <div class="timeline-desc">Scaling operations on Fiverr and Upwork, providing high-converting custom CMS websites end to end.</div>
+            <div class="tl-item reveal" data-dir="up" data-delay="400">
+              <div class="tl-dot" aria-hidden="true"></div>
+              <div class="tl-body">
+                <span class="tl-year">2026</span>
+                <h4 class="tl-title">Full-Service Freelancing</h4>
+                <p class="tl-desc">Scaling operations on Fiverr and Upwork, providing high-converting custom CMS websites end to end.</p>
+              </div>
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills-section">
-      <div class="section-container">
-        <div class="section-center-header reveal-item" data-reveal="fade-up">
-          <div class="section-badge">My Expertise</div>
-          <h2 class="section-title">Skills & <span class="text-gradient">Technologies</span></h2>
-          <div class="section-divider"></div>
+
+    <!-- ============================================================
+         SKILLS SECTION
+    ============================================================ -->
+    <section id="skills" class="section skills-section">
+      <div class="container">
+        <div class="section-header reveal" data-dir="up">
+          <p class="eyebrow">My Expertise</p>
+          <h2 class="section-heading">Skills & <span class="shimmer-text">Technologies</span></h2>
+          <div class="divider-line"></div>
         </div>
-        
+
         <div class="skills-grid">
-          <!-- Skill 1 -->
-          <div class="skill-item reveal-item" data-reveal="fade-up">
-            <div class="skill-info">
+          <div class="skill-item reveal" data-dir="up">
+            <div class="skill-meta">
               <span class="skill-name">WordPress</span>
-              <span class="skill-percent text-gradient" data-target="95">0%</span>
+              <span class="skill-pct shimmer-text" data-target="95">0%</span>
             </div>
-            <div class="progress-bar-bg">
-              <div class="progress-bar-fill" style="width: 0%"></div>
-            </div>
+            <div class="bar-track"><div class="bar-fill" data-width="95"></div></div>
           </div>
 
-          <!-- Skill 2 -->
-          <div class="skill-item reveal-item" data-reveal="fade-up" data-delay="100">
-            <div class="skill-info">
+          <div class="skill-item reveal" data-dir="up" data-delay="60">
+            <div class="skill-meta">
               <span class="skill-name">Elementor Pro</span>
-              <span class="skill-percent text-gradient" data-target="98">0%</span>
+              <span class="skill-pct shimmer-text" data-target="98">0%</span>
             </div>
-            <div class="progress-bar-bg">
-              <div class="progress-bar-fill" style="width: 0%"></div>
-            </div>
+            <div class="bar-track"><div class="bar-fill" data-width="98"></div></div>
           </div>
 
-          <!-- Skill 3 -->
-          <div class="skill-item reveal-item" data-reveal="fade-up" data-delay="200">
-            <div class="skill-info">
+          <div class="skill-item reveal" data-dir="up" data-delay="120">
+            <div class="skill-meta">
               <span class="skill-name">Webflow</span>
-              <span class="skill-percent text-gradient" data-target="92">0%</span>
+              <span class="skill-pct shimmer-text" data-target="92">0%</span>
             </div>
-            <div class="progress-bar-bg">
-              <div class="progress-bar-fill" style="width: 0%"></div>
-            </div>
+            <div class="bar-track"><div class="bar-fill" data-width="92"></div></div>
           </div>
 
-          <!-- Skill 4 -->
-          <div class="skill-item reveal-item" data-reveal="fade-up" data-delay="300">
-            <div class="skill-info">
+          <div class="skill-item reveal" data-dir="up" data-delay="180">
+            <div class="skill-meta">
               <span class="skill-name">Figma to Code</span>
-              <span class="skill-percent text-gradient" data-target="95">0%</span>
+              <span class="skill-pct shimmer-text" data-target="95">0%</span>
             </div>
-            <div class="progress-bar-bg">
-              <div class="progress-bar-fill" style="width: 0%"></div>
-            </div>
+            <div class="bar-track"><div class="bar-fill" data-width="95"></div></div>
           </div>
 
-          <!-- Skill 5 -->
-          <div class="skill-item reveal-item" data-reveal="fade-up" data-delay="400">
-            <div class="skill-info">
+          <div class="skill-item reveal" data-dir="up" data-delay="240">
+            <div class="skill-meta">
               <span class="skill-name">Custom CSS / Tailwind</span>
-              <span class="skill-percent text-gradient" data-target="93">0%</span>
+              <span class="skill-pct shimmer-text" data-target="93">0%</span>
             </div>
-            <div class="progress-bar-bg">
-              <div class="progress-bar-fill" style="width: 0%"></div>
-            </div>
+            <div class="bar-track"><div class="bar-fill" data-width="93"></div></div>
           </div>
 
-          <!-- Skill 6 -->
-          <div class="skill-item reveal-item" data-reveal="fade-up" data-delay="500">
-            <div class="skill-info">
+          <div class="skill-item reveal" data-dir="up" data-delay="300">
+            <div class="skill-meta">
               <span class="skill-name">WooCommerce</span>
-              <span class="skill-percent text-gradient" data-target="88">0%</span>
+              <span class="skill-pct shimmer-text" data-target="88">0%</span>
             </div>
-            <div class="progress-bar-bg">
-              <div class="progress-bar-fill" style="width: 0%"></div>
-            </div>
+            <div class="bar-track"><div class="bar-fill" data-width="88"></div></div>
           </div>
 
-          <!-- Skill 7 -->
-          <div class="skill-item reveal-item" data-reveal="fade-up" data-delay="600">
-            <div class="skill-info">
+          <div class="skill-item reveal" data-dir="up" data-delay="360">
+            <div class="skill-meta">
               <span class="skill-name">Responsive Design</span>
-              <span class="skill-percent text-gradient" data-target="96">0%</span>
+              <span class="skill-pct shimmer-text" data-target="96">0%</span>
             </div>
-            <div class="progress-bar-bg">
-              <div class="progress-bar-fill" style="width: 0%"></div>
-            </div>
+            <div class="bar-track"><div class="bar-fill" data-width="96"></div></div>
           </div>
 
-          <!-- Skill 8 -->
-          <div class="skill-item reveal-item" data-reveal="fade-up" data-delay="700">
-            <div class="skill-info">
-              <span class="skill-name">Page Speed</span>
-              <span class="skill-percent text-gradient" data-target="90">0%</span>
+          <div class="skill-item reveal" data-dir="up" data-delay="420">
+            <div class="skill-meta">
+              <span class="skill-name">Page Speed / SEO</span>
+              <span class="skill-pct shimmer-text" data-target="90">0%</span>
             </div>
-            <div class="progress-bar-bg">
-              <div class="progress-bar-fill" style="width: 0%"></div>
-            </div>
+            <div class="bar-track"><div class="bar-fill" data-width="90"></div></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services-section">
-      <div class="section-container">
-        <div class="section-center-header reveal-item" data-reveal="fade-up">
-          <div class="section-badge">What I Offer</div>
-          <h2 class="section-title">My <span class="text-gradient">Services</span></h2>
-          <div class="section-divider"></div>
-          <p class="section-subtitle" style="margin-top:20px">Comprehensive web solutions — from Figma designs to fully launched, optimized WordPress and Webflow sites.</p>
+
+    <!-- ============================================================
+         SERVICES SECTION
+    ============================================================ -->
+    <section id="services" class="section services-section">
+      <div class="container">
+        <div class="section-header reveal" data-dir="up">
+          <p class="eyebrow">What I Offer</p>
+          <h2 class="section-heading">My <span class="shimmer-text">Services</span></h2>
+          <div class="divider-line"></div>
         </div>
 
         <div class="services-grid">
-          <!-- Card 1 -->
-          <div class="service-card reveal-item" data-reveal="fade-up">
-            <div class="card-glow"></div>
-            <div class="card-icon-box">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20M2 12h20"/>
-              </svg>
+
+          <div class="svc-card reveal" data-dir="up">
+            <div class="svc-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
             </div>
-            <h3 class="card-title">Custom WordPress Development</h3>
-            <p class="card-desc">Hand-crafted WordPress sites with Elementor Pro tailored to your brand.</p>
-            <div class="card-tags">
-              <span class="tag">Elementor Pro</span>
-              <span class="tag">ACF</span>
-              <span class="tag">Custom Themes</span>
+            <h3 class="svc-title">WordPress Development</h3>
+            <p class="svc-desc">Custom theme builds with Elementor Pro, WooCommerce, and advanced custom fields — all production-ready.</p>
+            <div class="svc-tags">
+              <span class="tag">WordPress</span><span class="tag">Elementor</span><span class="tag">WooCommerce</span>
             </div>
           </div>
 
-          <!-- Card 2 -->
-          <div class="service-card reveal-item" data-reveal="fade-up" data-delay="100">
-            <div class="card-glow"></div>
-            <div class="card-icon-box">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5zM12 2h3.5a3.5 3.5 0 1 1 0 7H12V2zM12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0zM5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0zM5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/>
-              </svg>
+          <div class="svc-card reveal" data-dir="up" data-delay="80">
+            <div class="svc-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z"/><path d="M7 7h.01"/></svg>
             </div>
-            <h3 class="card-title">Figma to WordPress</h3>
-            <p class="card-desc">Pixel-perfect conversion of your Figma designs into fully functional WordPress sites.</p>
-            <div class="card-tags">
-              <span class="tag">Pixel Perfect</span>
-              <span class="tag">Responsive</span>
-              <span class="tag">CMS Ready</span>
+            <h3 class="svc-title">Webflow Development</h3>
+            <p class="svc-desc">Rich Webflow builds with CMS collections, custom interactions, and Webflow animations that look stunning.</p>
+            <div class="svc-tags">
+              <span class="tag">Webflow</span><span class="tag">CMS</span><span class="tag">Interactions</span>
             </div>
           </div>
 
-          <!-- Card 3 -->
-          <div class="service-card reveal-item" data-reveal="fade-up" data-delay="200">
-            <div class="card-glow"></div>
-            <div class="card-icon-box">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m18 16 4-4-4-4M6 8l-4 4 4 4M14.5 4l-5 16"/>
-              </svg>
+          <div class="svc-card reveal" data-dir="up" data-delay="160">
+            <div class="svc-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5Z"/><path d="m9 12 2 2 4-4"/></svg>
             </div>
-            <h3 class="card-title">Figma to Webflow</h3>
-            <p class="card-desc">Premium Figma designs converted into clean, CMS-powered Webflow projects.</p>
-            <div class="card-tags">
-              <span class="tag">Webflow CMS</span>
-              <span class="tag">Interactions</span>
-              <span class="tag">SEO</span>
+            <h3 class="svc-title">Figma to WordPress</h3>
+            <p class="svc-desc">Pixel-perfect conversion from any Figma design to a fully responsive, optimized WordPress website.</p>
+            <div class="svc-tags">
+              <span class="tag">Figma</span><span class="tag">WordPress</span><span class="tag">Pixel-Perfect</span>
             </div>
           </div>
 
-          <!-- Card 4 -->
-          <div class="service-card reveal-item" data-reveal="fade-up">
-            <div class="card-glow"></div>
-            <div class="card-icon-box">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594zM20 2v4M22 4h-4"/><circle cx="4" cy="20" r="2"/>
-              </svg>
+          <div class="svc-card reveal" data-dir="up" data-delay="80">
+            <div class="svc-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
             </div>
-            <h3 class="card-title">Webflow Development</h3>
-            <p class="card-desc">Modern, animated Webflow websites with custom interactions and CMS collections.</p>
-            <div class="card-tags">
-              <span class="tag">No-Code</span>
-              <span class="tag">Animations</span>
-              <span class="tag">CMS</span>
+            <h3 class="svc-title">Figma to Webflow</h3>
+            <p class="svc-desc">Bringing your Figma prototype to life in Webflow with clean, scalable structure and smooth transitions.</p>
+            <div class="svc-tags">
+              <span class="tag">Figma</span><span class="tag">Webflow</span><span class="tag">Responsive</span>
             </div>
           </div>
 
-          <!-- Card 5 -->
-          <div class="service-card reveal-item" data-reveal="fade-up" data-delay="100">
-            <div class="card-glow"></div>
-            <div class="card-icon-box">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
-              </svg>
+          <div class="svc-card reveal" data-dir="up" data-delay="160">
+            <div class="svc-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" x2="4" y1="22" y2="15"/></svg>
             </div>
-            <h3 class="card-title">E-Commerce Solutions</h3>
-            <p class="card-desc">WooCommerce & Webflow Ecommerce stores with payment integration.</p>
-            <div class="card-tags">
-              <span class="tag">WooCommerce</span>
-              <span class="tag">Stripe</span>
-              <span class="tag">Payments</span>
+            <h3 class="svc-title">Landing Pages</h3>
+            <p class="svc-desc">High-converting landing pages with clear CTAs and optimized layouts for lead generation and sales funnels.</p>
+            <div class="svc-tags">
+              <span class="tag">HTML/CSS</span><span class="tag">Conversion</span><span class="tag">CTA Design</span>
             </div>
           </div>
 
-          <!-- Card 6 -->
-          <div class="service-card reveal-item" data-reveal="fade-up" data-delay="200">
-            <div class="card-glow"></div>
-            <div class="card-icon-box">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/>
-              </svg>
+          <div class="svc-card reveal" data-dir="up" data-delay="240">
+            <div class="svc-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/><path d="M3 9V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2"/><path d="M12 12v5"/></svg>
             </div>
-            <h3 class="card-title">Speed Optimization</h3>
-            <p class="card-desc">Boost Core Web Vitals and rankings with deep performance tuning.</p>
-            <div class="card-tags">
-              <span class="tag">Core Web Vitals</span>
-              <span class="tag">Caching</span>
-              <span class="tag">CDN</span>
+            <h3 class="svc-title">E-Commerce Stores</h3>
+            <p class="svc-desc">Complete WooCommerce or Webflow e-commerce setups with product pages, checkout flows, and payment gateways.</p>
+            <div class="svc-tags">
+              <span class="tag">WooCommerce</span><span class="tag">Shopify</span><span class="tag">Webflow</span>
             </div>
           </div>
 
-          <!-- Card 7 -->
-          <div class="service-card reveal-item" data-reveal="fade-up">
-            <div class="card-glow"></div>
-            <div class="card-icon-box">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/>
-              </svg>
+          <div class="svc-card reveal" data-dir="up">
+            <div class="svc-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.54a16 16 0 0 0 5.55 5.55l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
             </div>
-            <h3 class="card-title">Responsive Design</h3>
-            <p class="card-desc">Mobile-first builds that look flawless on every screen size.</p>
-            <div class="card-tags">
-              <span class="tag">Mobile First</span>
-              <span class="tag">Cross-Browser</span>
+            <h3 class="svc-title">Website Redesign</h3>
+            <p class="svc-desc">Transform your outdated website into a modern, professional presence that converts visitors into clients.</p>
+            <div class="svc-tags">
+              <span class="tag">Redesign</span><span class="tag">UX/UI</span><span class="tag">Modern</span>
             </div>
           </div>
 
-          <!-- Card 8 -->
-          <div class="service-card reveal-item" data-reveal="fade-up" data-delay="100">
-            <div class="card-glow"></div>
-            <div class="card-icon-box">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/>
-              </svg>
+          <div class="svc-card reveal" data-dir="up" data-delay="80">
+            <div class="svc-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.34-4.34"/></svg>
             </div>
-            <h3 class="card-title">SEO Optimization</h3>
-            <p class="card-desc">On-page SEO, schema markup and technical fixes to climb the SERPs.</p>
-            <div class="card-tags">
-              <span class="tag">On-Page SEO</span>
-              <span class="tag">Schema</span>
+            <h3 class="svc-title">SEO Optimization</h3>
+            <p class="svc-desc">On-page SEO, schema markup, and technical fixes to get you climbing the SERPs and driving organic traffic.</p>
+            <div class="svc-tags">
+              <span class="tag">On-Page SEO</span><span class="tag">Schema</span><span class="tag">Performance</span>
             </div>
           </div>
 
-          <!-- Card 9 -->
-          <div class="service-card reveal-item" data-reveal="fade-up" data-delay="200">
-            <div class="card-glow"></div>
-            <div class="card-icon-box">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"/>
-              </svg>
+          <div class="svc-card reveal" data-dir="up" data-delay="160">
+            <div class="svc-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"/></svg>
             </div>
-            <h3 class="card-title">Maintenance & Support</h3>
-            <p class="card-desc">Updates, security and backups so your site stays fast and safe.</p>
-            <div class="card-tags">
-              <span class="tag">Backups</span>
-              <span class="tag">Security</span>
-              <span class="tag">24/7 Support</span>
+            <h3 class="svc-title">Maintenance & Support</h3>
+            <p class="svc-desc">Updates, security patching, and backups so your site stays fast, safe, and performing at its best.</p>
+            <div class="svc-tags">
+              <span class="tag">Backups</span><span class="tag">Security</span><span class="tag">24/7 Support</span>
             </div>
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-      <div class="section-container">
-        <div class="section-center-header reveal-item" data-reveal="fade-up">
-          <div class="section-badge">Get In Touch</div>
-          <h2 class="section-title">Let's Work <span class="text-gradient">Together</span></h2>
-          <div class="section-divider"></div>
-          <p class="section-subtitle" style="margin-top:20px">Have a Figma design ready or a project in mind? Let's bring it to life.</p>
+
+    <!-- ============================================================
+         CONTACT SECTION
+    ============================================================ -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <div class="section-header reveal" data-dir="up">
+          <p class="eyebrow">Get In Touch</p>
+          <h2 class="section-heading">Let's Work <span class="shimmer-text">Together</span></h2>
+          <div class="divider-line"></div>
+          <p class="section-sub">Have a Figma design ready or a project in mind? Let's bring it to life.</p>
         </div>
 
         <div class="contact-grid">
-          <!-- Form Card -->
-          <div class="contact-form-card reveal-item" data-reveal="fade-right">
-            <h3 class="form-title">Send a Message</h3>
-            
-            <form action="https://api.web3forms.com/submit" method="POST" id="contact-form" class="contact-form">
-              <!-- Free Web3Forms Access Key: Get one for free at https://web3forms.com -->
+
+          <!-- Form -->
+          <div class="contact-form-wrap reveal" data-dir="right">
+            <h3 class="contact-card-title">Send a Message</h3>
+            <form action="https://api.web3forms.com/submit" method="POST" id="contact-form" novalidate>
               <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
               <input type="hidden" name="subject" value="New Portfolio Message from Hassam.dev">
-              <input type="checkbox" name="botcheck" id="" style="display: none;">
+              <input type="checkbox" name="botcheck" style="display:none">
 
-              <div class="input-group">
-                <input type="text" name="name" id="form-name" required placeholder="Your Name" class="form-input">
+              <div class="field">
+                <input type="text" name="name" id="form-name" required placeholder="Your Name" class="field-input" autocomplete="name">
               </div>
-              <div class="input-group">
-                <input type="email" name="email" id="form-email" required placeholder="Your Email" class="form-input">
+              <div class="field">
+                <input type="email" name="email" id="form-email" required placeholder="Your Email" class="field-input" autocomplete="email">
               </div>
-              <div class="input-group">
-                <input type="text" name="subject" id="form-subject" required placeholder="Subject" class="form-input">
+              <div class="field">
+                <input type="text" name="subject" id="form-subject" required placeholder="Subject" class="field-input">
               </div>
-              <div class="input-group">
-                <textarea name="message" id="form-msg" required rows="5" placeholder="Your Message" class="form-textarea"></textarea>
+              <div class="field">
+                <textarea name="message" id="form-msg" required rows="5" placeholder="Your Message" class="field-input field-textarea"></textarea>
               </div>
-              <button type="submit" id="btn-submit-form" class="btn btn-primary btn-block btn-glow">
-                <span>Send Message</span>
+
+              <button type="submit" id="btn-submit" class="btn btn-primary btn-block btn-glow">
+                <span id="btn-text">Send Message</span>
+                <svg id="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>
               </button>
-              <div id="form-feedback" class="form-feedback-message"></div>
+              <div id="form-feedback" class="form-feedback" aria-live="polite"></div>
             </form>
           </div>
 
           <!-- Contact Details -->
-          <div class="contact-details reveal-item" data-reveal="fade-left" data-delay="200">
-            <h3 class="details-title">Contact Information</h3>
-            <p class="details-desc">Reach out through any channel — I typically respond within 24 hours.</p>
+          <div class="contact-details reveal" data-dir="left" data-delay="150">
+            <h3 class="contact-card-title">Contact Information</h3>
+            <p class="contact-sub">Reach out through any channel — I typically respond within 24 hours.</p>
 
-            <div class="details-list">
-              <!-- Email Card -->
-              <a href="mailto:developerhassamkhan@gmail.com" class="detail-card group">
-                <div class="detail-icon-box">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/>
-                  </svg>
+            <div class="contact-list">
+              <a href="mailto:developerhassamkhan@gmail.com" class="contact-item">
+                <div class="contact-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
                 </div>
-                <div class="detail-text-group">
-                  <div class="detail-label">Email</div>
-                  <div class="detail-value group-hover:text-primary transition-colors">developerhassamkhan@gmail.com</div>
+                <div>
+                  <span class="contact-label">Email</span>
+                  <span class="contact-value">developerhassamkhan@gmail.com</span>
                 </div>
               </a>
 
-              <!-- WhatsApp Card -->
-              <a href="https://wa.me/923110205721" target="_blank" rel="noopener" class="detail-card group">
-                <div class="detail-icon-box">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/>
-                  </svg>
+              <a href="https://wa.me/923110205721" target="_blank" rel="noopener" class="contact-item">
+                <div class="contact-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/></svg>
                 </div>
-                <div class="detail-text-group">
-                  <div class="detail-label">WhatsApp / Phone</div>
-                  <div class="detail-value group-hover:text-primary transition-colors">+92 311 0205721</div>
+                <div>
+                  <span class="contact-label">WhatsApp / Phone</span>
+                  <span class="contact-value">+92 311 0205721</span>
                 </div>
               </a>
 
-              <!-- Location Card -->
-              <div class="detail-card">
-                <div class="detail-icon-box">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/>
-                  </svg>
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
                 </div>
-                <div class="detail-text-group">
-                  <div class="detail-label">Location</div>
-                  <div class="detail-value">Pakistan</div>
+                <div>
+                  <span class="contact-label">Location</span>
+                  <span class="contact-value">Pakistan</span>
                 </div>
               </div>
             </div>
 
-            <!-- Freelance & Social Links -->
-            <div class="social-links-wrapper">
-              <span class="social-title">Connect with me</span>
-              <div class="social-buttons-grid">
+            <!-- Social Links -->
+            <div class="social-wrap">
+              <p class="social-label">Connect with me</p>
+              <div class="social-grid">
                 <a href="https://www.linkedin.com/in/hassam-khan-b36684397/" target="_blank" rel="noopener" class="social-btn" aria-label="LinkedIn">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/>
-                  </svg>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
                   <span>LinkedIn</span>
                 </a>
                 <a href="https://www.fiverr.com/khanhassam247" target="_blank" rel="noopener" class="social-btn" aria-label="Fiverr">
-                  <span class="freelance-brand fiverr-brand">Fi</span>
+                  <span class="brand-badge fiverr">Fi</span>
                   <span>Fiverr</span>
                 </a>
-                <a href="https://www.upwork.com/freelancers/~012c84b8b85c0ebb7e?qpn-profile-completeness=portfolio" target="_blank" rel="noopener" class="social-btn" aria-label="Upwork">
-                  <span class="freelance-brand upwork-brand">Up</span>
+                <a href="https://www.upwork.com/freelancers/~012c84b8b85c0ebb7e" target="_blank" rel="noopener" class="social-btn" aria-label="Upwork">
+                  <span class="brand-badge upwork">Up</span>
                   <span>Upwork</span>
                 </a>
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
   <footer class="main-footer">
-    <div class="section-container footer-container">
-      <div class="footer-left">
-        <p>© 2026 Hassam Khan. Crafted with care.</p>
-      </div>
-      <div class="footer-mid">
+    <div class="container footer-inner">
+      <p class="footer-copy">© 2026 Hassam Khan. Crafted with care.</p>
+      <div class="footer-links">
         <a href="https://www.linkedin.com/in/hassam-khan-b36684397/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://www.fiverr.com/khanhassam247" target="_blank" rel="noopener">Fiverr</a>
-        <a href="https://www.upwork.com/freelancers/~012c84b8b85c0ebb7e?qpn-profile-completeness=portfolio" target="_blank" rel="noopener">Upwork</a>
+        <a href="https://www.upwork.com/freelancers/~012c84b8b85c0ebb7e" target="_blank" rel="noopener">Upwork</a>
       </div>
-      <div class="footer-right">
-        <p>WordPress · Webflow · Figma to Code</p>
-      </div>
+      <p class="footer-stack">WordPress · Webflow · Figma to Code</p>
     </div>
   </footer>
 
