@@ -153,15 +153,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   overlay.addEventListener('click', closeDrawer);
-  drawerLinks.forEach(link => link.addEventListener('click', closeDrawer));
-
-  // Also close drawer for internal anchor links in the button, but allow external links to open first
+  
+  // Handle all drawer navigation links properly
   document.querySelectorAll('.drawer-nav a').forEach(link => {
     link.addEventListener('click', (e) => {
-      if (link.hasAttribute('data-external')) {
-        // For external links, don't close the drawer - let the link open in new tab
+      // External links (LinkedIn, WhatsApp, etc.) - don't close drawer, let them open
+      if (link.hasAttribute('data-external') || link.target === '_blank') {
         return;
       }
+      // Internal anchor links - close drawer
       closeDrawer();
     });
   });
