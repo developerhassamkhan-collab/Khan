@@ -1,18 +1,37 @@
 /**
  * PORTFOLIO v3.0 — Hassam Khan
  * Interaction & Animation Engine
+ * Production-Ready, Mobile-Safe
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // PAGE LOAD
+  // DEBUG: Verify LinkedIn buttons are found
+  const linkedinBtns = document.querySelectorAll('a[href*="linkedin"]');
+  console.log('✓ Portfolio loaded. Found ' + linkedinBtns.length + ' LinkedIn buttons');
+
+  // FAIL-SAFE: Force LinkedIn buttons to work
+  linkedinBtns.forEach((btn, i) => {
+    btn.addEventListener('click', (e) => {
+      // Don't prevent navigation for external links
+      console.log('Hire Me button ' + (i+1) + ' clicked - opening LinkedIn');
+      // Let the browser handle the default behavior (target="_blank")
+    });
+  });
+
+  // ============================================================
+  // 1. PAGE LOAD FADE-IN
+  // ============================================================
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       document.body.classList.add('loaded');
     });
   });
 
-  // PARTICLES CANVAS
+
+  // ============================================================
+  // 2. PARTICLES CANVAS
+  // ============================================================
   const canvas = document.getElementById('particles-canvas');
   const ctx    = canvas.getContext('2d');
   let particles = [];
@@ -33,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
       this.speedX = (Math.random() - 0.5) * 0.35;
       this.speedY = (Math.random() - 0.5) * 0.35;
       this.alpha  = Math.random() * 0.45 + 0.08;
-      this.color  = Math.random() > 0.5 ? '37,99,235' : '8,145,178';
+      this.color  = Math.random() > 0.5 ? '99,102,241' : '6,182,212';
     }
     update() {
       this.x += this.speedX;
@@ -64,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < 115) {
           ctx.beginPath();
-          ctx.strokeStyle = `rgba(37,99,235,${0.055 * (1 - dist / 115)})`;
+          ctx.strokeStyle = `rgba(99,102,241,${0.055 * (1 - dist / 115)})`;
           ctx.lineWidth = 0.5;
           ctx.moveTo(particles[a].x, particles[a].y);
           ctx.lineTo(particles[b].x, particles[b].y);
@@ -84,15 +103,23 @@ document.addEventListener('DOMContentLoaded', () => {
   initParticles();
   animateParticles();
 
-  // HEADER & SCROLL
+
+  // ============================================================
+  // 3. HEADER — SCROLL STATE & ACTIVE NAV LINK
+  // ============================================================
   const header   = document.getElementById('main-header');
   const navLinks = document.querySelectorAll('.nav-link');
   const sections = document.querySelectorAll('section[id]');
 
   const onScroll = () => {
+    // Scrolled class
     header.classList.toggle('scrolled', window.scrollY > 50);
+
+    // Top-bar scroll progress
     const progress = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
     document.getElementById('scroll-progress-bar').style.width = Math.min(progress, 100) + '%';
+
+    // Active nav link
     const scrollPos = window.scrollY + 140;
     sections.forEach(section => {
       const top    = section.offsetTop;
@@ -109,7 +136,10 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // MOBILE DRAWER
+
+  // ============================================================
+  // 4. MOBILE DRAWER
+  // ============================================================
   const hamburger    = document.getElementById('hamburger');
   const drawer       = document.getElementById('mobile-drawer');
   const overlay      = document.getElementById('drawer-overlay');
@@ -137,25 +167,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
   overlay.addEventListener('click', closeDrawer);
   
+  // Handle all drawer navigation links properly
   document.querySelectorAll('.drawer-nav a').forEach(link => {
     link.addEventListener('click', (e) => {
+      // External links (LinkedIn, WhatsApp, etc.) - don't close drawer, let them open
       if (link.hasAttribute('data-external') || link.target === '_blank') {
         return;
       }
+      // Internal anchor links - close drawer
       closeDrawer();
     });
   });
 
+  // Close on ESC
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer();
   });
 
-  // SMOOTH SCROLL
+
+  // ============================================================
+  // 5. SMOOTH ANCHOR SCROLL
+  // ============================================================
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', e => {
+      // Skip if link has target="_blank" (external links)
       if (anchor.target === '_blank' || anchor.hasAttribute('data-external')) {
         return;
       }
+      
       const id     = anchor.getAttribute('href');
       if (id === '#') return;
       const target = document.querySelector(id);
@@ -166,8 +205,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // REVEAL ANIMATIONS
+
+  // ============================================================
+  // 6. SCROLL REVEAL
+  // ============================================================
   const revealEls = document.querySelectorAll('.reveal');
+
   const revealObs = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
@@ -180,7 +223,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   revealEls.forEach(el => revealObs.observe(el));
 
-  // TYPEWRITER
+
+  // ============================================================
+  // 7. TYPEWRITER
+  // ============================================================
   const typeEl = document.getElementById('typewriter');
   if (typeEl) {
     const phrases = [
@@ -205,7 +251,41 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(type, 900);
   }
 
-  // SKILLS ANIMATION
+
+  // ============================================================
+  // 8. HERO PARALLAX (Desktop only — no parallax on mobile to avoid layout bugs)
+  // ============================================================
+  const heroPhoto = document.querySelector('.hero-photo');
+  const heroText  = document.querySelector('.hero-text');
+
+  if (heroPhoto && window.innerWidth >= 1024) {
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (ticking) return;
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        if (y < window.innerHeight) {
+          heroPhoto.style.transform = `translateY(${y * 0.07}px)`;
+          heroText.style.transform  = `translateY(${y * 0.035}px)`;
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }, { passive: true });
+
+    // Reset on resize so mobile gets no transform
+    window.addEventListener('resize', () => {
+      if (window.innerWidth < 1024) {
+        heroPhoto.style.transform = '';
+        heroText.style.transform  = '';
+      }
+    }, { passive: true });
+  }
+
+
+  // ============================================================
+  // 9. SKILLS ANIMATION (count-up + bar fill)
+  // ============================================================
   const skillsSection = document.getElementById('skills');
   let skillsDone = false;
 
@@ -240,7 +320,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.12 }).observe(skillsSection);
   }
 
-  // SERVICE CARD GLOW
+
+  // ============================================================
+  // 10. MOUSE-TRACKING GLOW ON SERVICE CARDS
+  // ============================================================
   document.querySelectorAll('.svc-card').forEach(card => {
     card.addEventListener('mousemove', e => {
       const r = card.getBoundingClientRect();
@@ -249,51 +332,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // FORM HANDLER
-  const form      = document.getElementById('contact-form');
-  const feedback  = document.getElementById('form-feedback');
-  const btnSubmit = document.getElementById('btn-submit');
-  const btnText   = document.getElementById('btn-text');
 
-  if (form) {
-    form.addEventListener('submit', async e => {
-      e.preventDefault();
-
-      const nameVal  = document.getElementById('form-name').value.trim();
-      const emailVal = document.getElementById('form-email').value.trim();
-
-      btnSubmit.disabled = true;
-      btnText.textContent = 'Sending…';
-      feedback.className  = 'form-feedback';
-      feedback.textContent = '';
-
-      try {
-        const res = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(Object.fromEntries(new FormData(form))),
-        });
-
-        const data = await res.json();
-
-        if (res.ok) {
-          showFeedback('success', `✓ Thanks, ${nameVal}! Message sent successfully. I'll reply to ${emailVal} within 24 hours.`);
-          form.reset();
-        } else {
-          showFeedback('error', `Error: ${data.message}`);
-        }
-      } catch (err) {
-        showFeedback('error', 'Network error. Please try again.');
-      } finally {
-        btnSubmit.disabled  = false;
-        btnText.textContent = 'Send Message';
-      }
-    });
-  }
-
-  const showFeedback = (type, msg) => {
-    feedback.className   = `form-feedback ${type}`;
-    feedback.textContent = msg;
-  };
+  // ============================================================
+  // 11. DIRECT CONTACT LINKS (No form needed)
+  // ============================================================
+  // Contact is now handled via direct email, WhatsApp, and LinkedIn links
+  // All buttons are direct links with no form submission needed
 
 });
