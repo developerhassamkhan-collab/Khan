@@ -6,6 +6,19 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  // DEBUG: Verify LinkedIn buttons are found
+  const linkedinBtns = document.querySelectorAll('a[href*="linkedin"]');
+  console.log('✓ Portfolio loaded. Found ' + linkedinBtns.length + ' LinkedIn buttons');
+
+  // FAIL-SAFE: Force LinkedIn buttons to work
+  linkedinBtns.forEach((btn, i) => {
+    btn.addEventListener('click', (e) => {
+      // Don't prevent navigation for external links
+      console.log('Hire Me button ' + (i+1) + ' clicked - opening LinkedIn');
+      // Let the browser handle the default behavior (target="_blank")
+    });
+  });
+
   // ============================================================
   // 1. PAGE LOAD FADE-IN
   // ============================================================
@@ -177,6 +190,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // ============================================================
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', e => {
+      // Skip if link has target="_blank" (external links)
+      if (anchor.target === '_blank' || anchor.hasAttribute('data-external')) {
+        return;
+      }
+      
       const id     = anchor.getAttribute('href');
       if (id === '#') return;
       const target = document.querySelector(id);
