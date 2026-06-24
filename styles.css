@@ -752,8 +752,8 @@ body::before {
 /* Photo frame — CRITICAL mobile fix: max-width controlled by clamp */
 .photo-frame {
   position: relative;
-  /* Extra Large: 300px min, 95vw fluid, 560px max */
-  width: clamp(300px, 95vw, 560px);
+  /* Balanced: 260px min, 75vw fluid, 480px max */
+  width: clamp(260px, 75vw, 480px);
   aspect-ratio: 3 / 4;
   z-index: 2;
 }
