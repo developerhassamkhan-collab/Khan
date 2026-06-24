@@ -691,7 +691,36 @@ body::before {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 12px;
+}
+
+.stat-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(var(--p-rgb), 0.2), rgba(var(--s-rgb), 0.1));
+  border: 1px solid rgba(var(--p-rgb), 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--secondary);
+  box-shadow: 
+    0 10px 30px rgba(var(--p-rgb), 0.15),
+    inset 0 1px 0 rgba(255,255,255,0.1);
+  transition: all 0.3s ease;
+}
+
+.stat-icon svg {
+  width: 28px;
+  height: 28px;
+  filter: drop-shadow(0 2px 4px rgba(var(--p-rgb), 0.2));
+}
+
+.stat-icon:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 15px 40px rgba(var(--p-rgb), 0.25),
+    inset 0 1px 0 rgba(255,255,255,0.15);
 }
 .stat-divider {
   width: 1px;
