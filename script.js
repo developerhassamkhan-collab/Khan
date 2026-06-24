@@ -355,9 +355,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const accessKey = form.querySelector('input[name="access_key"]')?.value;
 
-      // Test mode if no real key set
-      const accessKey = form.querySelector('input[name="access_key"]')?.value;
-
       try {
         const res  = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
@@ -377,3 +374,17 @@ document.addEventListener('DOMContentLoaded', () => {
       } finally {
         resetBtn();
       }
+    });
+  }
+
+  const showFeedback = (type, msg) => {
+    feedback.className   = `form-feedback ${type}`;
+    feedback.textContent = msg;
+  };
+  const resetBtn = () => {
+    btnSubmit.disabled  = false;
+    btnText.textContent = 'Send Message';
+  };
+  const delay = ms => new Promise(r => setTimeout(r, ms));
+
+});
