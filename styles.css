@@ -478,14 +478,21 @@ body::before {
    9. HERO SECTION — MOBILE-FIRST FIX
 ============================================================ */
 .hero {
-  min-height: 100dvh;
+  min-height: auto;
   display: flex;
   align-items: center;
   padding-top: calc(var(--header-h) + 32px);
   /* Conservative bottom padding — no overflow on mobile */
-  padding-bottom: 80px;
+  padding-bottom: 60px;
   position: relative;
   overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    min-height: 100dvh;
+    padding-bottom: 80px;
+  }
 }
 
 .hero::before {
@@ -745,8 +752,8 @@ body::before {
 /* Photo frame — CRITICAL mobile fix: max-width controlled by clamp */
 .photo-frame {
   position: relative;
-  /* clamp: min 220px, fluid, max 440px — no overflow on any screen */
-  width: clamp(220px, 62vw, 440px);
+  /* Extra Large: 300px min, 95vw fluid, 560px max */
+  width: clamp(300px, 95vw, 560px);
   aspect-ratio: 3 / 4;
   z-index: 2;
 }
